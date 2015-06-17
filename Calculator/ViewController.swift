@@ -29,6 +29,20 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func appendDot(sender: UIButton) {
+        var isDotTyped=false
+        if !isDotTyped {
+            if userIsInTheMiddleOfTypingANumber{
+                display.text=display.text!+"."
+            }else {
+                display.text="0."
+                userIsInTheMiddleOfTypingANumber=true
+            }
+            isDotTyped=true
+        }
+    }
+    
+    
     @IBAction func operate(sender: UIButton) {
         if userIsInTheMiddleOfTypingANumber {
             enter()
