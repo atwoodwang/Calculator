@@ -33,9 +33,11 @@ class CalculatorBrain {
         }
     }
     
-    func clean (){
+    func cleanall (){
         opStack.removeAll()
     }
+    
+
     
     private var opStack = [Op]()
     
@@ -55,6 +57,8 @@ class CalculatorBrain {
         knownOps["sin"] = Op.UnaryOperation("sin", {sin(M_PI/180*$0)})
         knownOps["cos"] = Op.UnaryOperation("cos", {cos(M_PI/180*$0)})
         knownOps["π"]=Op.Constant("π",M_PI)
+        knownOps["+/-"]=Op.UnaryOperation("+/-", -)
+        knownOps["%"]=Op.UnaryOperation("%", {$0/100})
     }
     
     private func evaluate(ops:[Op]) ->(result: Double?,remainingOps: [Op]){

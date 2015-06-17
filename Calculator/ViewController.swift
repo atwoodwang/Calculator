@@ -44,7 +44,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func cleanall() {
-        brain.clean()
+        brain.cleanall()
+        userIsInTheMiddleOfTypingANumber=false
+        isDotTyped=false
+        display.text="0"
+    }
+    
+    @IBAction func clean() {
         userIsInTheMiddleOfTypingANumber=false
         isDotTyped=false
         display.text="0"
