@@ -33,6 +33,10 @@ class CalculatorBrain {
         }
     }
     
+    func clean (){
+        opStack.removeAll()
+    }
+    
     private var opStack = [Op]()
     
     private var knownOps = [String:Op]()
