@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     
     var brain = CalculatorBrain()
     
+    var isDotTyped=false
+    
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
         
@@ -30,7 +32,6 @@ class ViewController: UIViewController {
     
     
     @IBAction func appendDot(sender: UIButton) {
-        var isDotTyped=false
         if !isDotTyped {
             if userIsInTheMiddleOfTypingANumber{
                 display.text=display.text!+"."
@@ -42,6 +43,12 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func cleanall() {
+        brain.clean()
+        userIsInTheMiddleOfTypingANumber=false
+        isDotTyped=false
+        display.text="0"
+    }
     
     @IBAction func operate(sender: UIButton) {
         if userIsInTheMiddleOfTypingANumber {
@@ -59,6 +66,7 @@ class ViewController: UIViewController {
     
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
+        isDotTyped=false
         
         if let result=brain.pushOperand(displayValue) {
             displayValue=result
